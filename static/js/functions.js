@@ -88,7 +88,7 @@ $(document).ready(function()
 
                 document.getElementById("resultDiv").innerHTML = "";
                 var img = document.createElement("img");
-                img.src = "../imgs/images/" + data;
+                img.src = "/static/imgs/images/" + data;
                 img.id = "picture";
                 img.height = "600";
 

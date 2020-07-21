@@ -7,8 +7,8 @@ from io import BytesIO
 import time
 import pandas as pd
 
-# from keras.models import load_model
-# from keras import backend as K
+from keras.models import load_model
+from keras import backend as K
 
 from random import randint
 
