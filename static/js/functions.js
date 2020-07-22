@@ -86,12 +86,8 @@ $(document).ready(function()
 
     show_image()
 
-            // Compare user input to given features
-            $('#user-anger').html(pred["anger"])
-            $('#user-anxiety').html(pred["anxiety"])
-            $('#user-positive').html(pred["positive"])
-            $('#user-sad').html(pred["sad"])
-            $('#user-affiliation').html(pred["affiliation"])
+// we actually don't want the features from the ajax call - so we'll have to grab the
+//features of the random image from the liwc.csv
 
     var photovals = JSON.parse(features)
 
