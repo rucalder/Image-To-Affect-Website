@@ -72,6 +72,8 @@ return pred
 // should be shown to user
 
 function onButtonClicked(){
+//have to create counter to keep track of button clicks, change when button has been
+//clicked 5 times
     pred = saveAffects();
     show_image();
     document.getElementById("myForm").reset();
@@ -83,7 +85,6 @@ $(document).ready(function()
 {
 
     show_image()
-            var photovals = JSON.parse(features)
 
             // Compare user input to given features
             $('#user-anger').html(pred["anger"])
@@ -92,12 +93,22 @@ $(document).ready(function()
             $('#user-sad').html(pred["sad"])
             $('#user-affiliation').html(pred["affiliation"])
 
-            $('#comp-anger').html(photovals[2])
-            $('#comp-anxiety').html(photovals[1])
-            $('#comp-positive').html(photovals[0])
-            $('#comp-sad').html(photovals[3])
-            $('#comp-affiliation').html(photovals[4])
+    var photovals = JSON.parse(features)
 
+    // Compare user input to given features
+    $('#user-anger').html(pred["anger"])
+    $('#user-anxiety').html(pred["anxiety"])
+    $('#user-positive').html(pred["positive"])
+    $('#user-sad').html(pred["sad"])
+    $('#user-affiliation').html(pred["affiliation"])
+
+    $('#comp-anger').html(photovals[2])
+    $('#comp-anxiety').html(photovals[1])
+    $('#comp-positive').html(photovals[0])
+    $('#comp-sad').html(photovals[3])
+    $('#comp-affiliation').html(photovals[4])
+
+})
             // TODO difference column (how much user missed by) and color changing based on accuracy
 
  /*   pred = saveAffects()
@@ -149,4 +160,3 @@ $(document).ready(function()
             // TODO difference column (how much user missed by) and color changing based on accuracy
             }
         })*/
-})
