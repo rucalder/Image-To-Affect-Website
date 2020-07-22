@@ -44,6 +44,7 @@ console.log(allFilePaths[ranNum])
 
 }
 
+// function to return model output predictions
 
 function saveAffects(){
 
@@ -79,6 +80,7 @@ $(document).ready(function()
         dataType: 'json',
         success:function( data )
             {
+                var data2 = data;
                 var dataTosplit = data;
                 var res = dataTosplit.split(";");
                 var data = res[0];
@@ -96,10 +98,26 @@ $(document).ready(function()
                 foo.appendChild(img);
                 console.log("img src is" + img.src)
 
-            $('#PaintingName').html("result image is " + data)
-            $('#artFeatures').html("features of selected art are: " + features)
-            $('#sliderValues').html("slider values are: " + JSON.stringify (pred))
+            $('#PaintingName').html("result image is: " + data)
+            //$('#artFeatures').html("features of selected art are: " + features)
+            //$('#sliderValues').html("slider values are: " + JSON.stringify (pred))
 
+                var photovals = JSON.parse(features)
+
+            // Compare user input to given features
+            $('#user-anger').html(pred["anger"])
+            $('#user-anxiety').html(pred["anxiety"])
+            $('#user-positive').html(pred["positive"])
+            $('#user-sad').html(pred["sad"])
+            $('#user-affiliation').html(pred["affiliation"])
+
+            $('#comp-anger').html(photovals[2])
+            $('#comp-anxiety').html(photovals[1])
+            $('#comp-positive').html(photovals[0])
+            $('#comp-sad').html(photovals[3])
+            $('#comp-affiliation').html(photovals[4])
+
+            // TODO difference column (how much user missed by) and color changing based on accuracy
             }
         })
     })
