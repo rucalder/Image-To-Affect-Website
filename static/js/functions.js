@@ -36,6 +36,7 @@ ranNum = Math.floor(Math.random() * allFilePaths.length);
     var img = document.createElement("img");
     img.src = "static/imgs/images/" + allFilePaths[ranNum];
     img.id = "picture";
+    img.height = "600";
 
 console.log(allFilePaths[ranNum])
 
@@ -65,13 +66,41 @@ return pred
 }
 
 
+// When the page loads - we want the user to be presented with the slider values set to zero, and a random image.
+// Then the user changes the slider, and clicks "Submit your guess". When this happens, the slider values should be
+//stored, along with the affect vector for the image, and the path to the image. After 5 images, all info
+// should be shown to user
+
+function onButtonClicked(){
+    pred = saveAffects();
+    show_image();
+    document.getElementById("myForm").reset();
+return pred
+}
+
 
 $(document).ready(function()
 {
 
-/*    $( '#angerValue,#anxietyValue,#socialValue,#positiveValue,#affiliationValue' ).mouseup(function() {*/
-        show_image()
-        /*pred = saveAffects()*/
+    show_image()
+            var photovals = JSON.parse(features)
+
+            // Compare user input to given features
+            $('#user-anger').html(pred["anger"])
+            $('#user-anxiety').html(pred["anxiety"])
+            $('#user-positive').html(pred["positive"])
+            $('#user-sad').html(pred["sad"])
+            $('#user-affiliation').html(pred["affiliation"])
+
+            $('#comp-anger').html(photovals[2])
+            $('#comp-anxiety').html(photovals[1])
+            $('#comp-positive').html(photovals[0])
+            $('#comp-sad').html(photovals[3])
+            $('#comp-affiliation').html(photovals[4])
+
+            // TODO difference column (how much user missed by) and color changing based on accuracy
+
+ /*   pred = saveAffects()
     $.ajax({
         url: "/TouchToArt",
         type: 'POST',
@@ -119,6 +148,5 @@ $(document).ready(function()
 
             // TODO difference column (how much user missed by) and color changing based on accuracy
             }
-        })
-/*    })*/
+        })*/
 })
