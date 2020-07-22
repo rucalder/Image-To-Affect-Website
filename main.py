@@ -19,6 +19,10 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/GetVector', methods=['GET', 'POST'])
+def GetVector():
+    return jsonify(5)
+
 
 @app.route('/TouchToArt', methods=['GET', 'POST'])
 def TouchToArt():
