@@ -69,7 +69,7 @@ return pred
 $(document).ready(function()
 {
 
-    $( '#angerValue,#anxietyValue,#socialValue,#positiveValue,#affiliationValue' ).mouseup(function() {
+/*    $( '#angerValue,#anxietyValue,#socialValue,#positiveValue,#affiliationValue' ).mouseup(function() {*/
         console.log('starting submit')
         pred = saveAffects()
     $.ajax({
@@ -120,5 +120,5 @@ $(document).ready(function()
             // TODO difference column (how much user missed by) and color changing based on accuracy
             }
         })
-    })
+/*    })*/
 })
