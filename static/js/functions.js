@@ -70,7 +70,8 @@ $(document).ready(function()
 {
 
 /*    $( '#angerValue,#anxietyValue,#socialValue,#positiveValue,#affiliationValue' ).mouseup(function() {*/
-        pred = saveAffects()
+        show_image()
+        /*pred = saveAffects()*/
     $.ajax({
         url: "/TouchToArt",
         type: 'POST',
