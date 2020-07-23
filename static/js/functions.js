@@ -111,13 +111,17 @@ function onButtonClicked(clicked_id) {
         score++;
     }
     clicks++;
+    document.getElementById('current_pick').textContent = (clicks+1).toString();
+    document.getElementById('selection_' + (clicks).toString()).textContent = clicked_emotion;
     // reset page if buttons have been completed
     if(clicks >= emoteTypes.length){
         clicks = 0;
+        document.getElementById('current_pick').textContent = (clicks+1).toString();
         questions++;
         show_image();
         for(var i = 0; i < emoteTypes.length; i++){
             document.getElementById(emoteTypes[i] + '_button').disabled = false;
+            document.getElementById('selection_' + (i+1).toString()).textContent = " ";
         }
         if(questions >= 5){
             sessionStorage.setItem('playerScore', score.toString);
@@ -132,84 +136,3 @@ function onButtonClicked(clicked_id) {
 $(document).ready(function () {
     show_image()
 })
-    // vector = getVector()
-
-    // we actually don't want the features from the ajax call - so we'll have to grab the
-    //features of the random image from the liwc.csv
-
-    // pred = saveAffects()
-    // data = JSON.stringify(pred)
-    // var dataTosplit = data;
-    // var res = dataTosplit.split(";");
-    // var data = res[0];
-    // var features = res[1];
-
-    // var photovals = JSON.parse(data)
-
-    // // Compare user input to given features
-    // $('#user-anger').html(pred["anger"])
-    // $('#user-anxiety').html(pred["anxiety"])
-    // $('#user-positive').html(pred["positive"])
-    // $('#user-sad').html(pred["sad"])
-    // $('#user-affiliation').html(pred["affiliation"])
-
-    // $('#comp-anger').html(photovals[2])
-    // $('#comp-anxiety').html(photovals[1])
-    // $('#comp-positive').html(photovals[0])
-    // $('#comp-sad').html(photovals[3])
-    // $('#comp-affiliation').html(photovals[4])
-
-
-
-
-    // pred = saveAffects()
-    // $.ajax({
-    //     url: "/GetVector",
-    //     type: 'GET',
-    //     data: JSON.stringify (pred),
-    //     contentType: "application/json",
-    //     dataType: 'json',
-    //     success:function( data )
-    //         {
-    //             var data2 = data;
-    //             var dataTosplit = data;
-    //             var res = dataTosplit.split(";");
-    //             var data = res[0];
-    //             var features = res[1];
-    //             console.log("new data is" + data)
-    //             console.log("new features is" + features)
-
-    //             document.getElementById("resultDiv").innerHTML = "";
-    //             var img = document.createElement("img");
-    //             img.src = "/static/imgs/images/" + data;
-    //             img.id = "picture";
-    //             img.height = "600";
-
-    //             var foo = document.getElementById("resultDiv");
-    //             foo.appendChild(img);
-    //             console.log("img src is" + img.src)
-
-    //         $('#PaintingName').html("result image is: " + data)
-    //         //$('#artFeatures').html("features of selected art are: " + features)
-    //         //$('#sliderValues').html("slider values are: " + JSON.stringify (pred))
-
-    //             var photovals = JSON.parse(features)
-
-    //         // Compare user input to given features
-    //         $('#user-anger').html(pred["anger"])
-    //         $('#user-anxiety').html(pred["anxiety"])
-    //         $('#user-positive').html(pred["positive"])
-    //         $('#user-sad').html(pred["sad"])
-    //         $('#user-affiliation').html(pred["affiliation"])
-
-    //         $('#comp-anger').html(photovals[2])
-    //         $('#comp-anxiety').html(photovals[1])
-    //         $('#comp-positive').html(photovals[0])
-    //         $('#comp-sad').html(photovals[3])
-    //         $('#comp-affiliation').html(photovals[4])
-
-    //         // TODO difference column (how much user missed by) and color changing based on accuracy
-    //         }
-    //     })
-    // })
-    //         // TODO difference column (how much user missed by) and color changing based on accuracy
