@@ -45,7 +45,7 @@ def GetUserImage():
 
                 return redirect(request.url)
 
-    return render_template("index.html")
+    return render_template("user_input_output.html")
 
 
 
