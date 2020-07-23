@@ -5,9 +5,11 @@ vectorPath = "../data/liwc_toParse.csv"
 var clicks = 0;
 var score = 0;
 var questions = 0;
-var ranNum = 0;
 var currVect = [];
-var emoteTypes = ['anger', 'anxiety', 'positivity', 'sadness', 'love'];
+var currDic = {};
+//var emoteTypes = ['anger', 'anxiety', 'positivity', 'sadness', 'love'];
+var emoteTypes = ['positivity', 'anxiety', 'anger', 'sadness', 'love'];
+var numGames = 5;
 
 function readCSVToArray(path, delimter) {
     var filePaths = []
@@ -34,7 +36,7 @@ function getVector() {
         url: '/GetVector',
         data: JSON.stringify(allFilePaths[ranNum]),
         contentType: 'application/json',
-        success:function(data){
+        success: function (data) {
             return data;
         }
     });
@@ -42,7 +44,7 @@ function getVector() {
 
 // function to return random image
 
-function show_image() {
+function show_image() { //TODO make show image never repeat (in same round, I got the same image 2x in a row)
 
     //clear the "resultDiv"
     document.getElementById("resultDiv").innerHTML = "";
@@ -50,9 +52,16 @@ function show_image() {
     allFilePaths = readCSVToArray(csvPath, '\r');
     allVectorPaths = readCSVToArray(vectorPath, '\r');
 
-    ranNum = Math.floor(Math.random() * allFilePaths.length);
+    var ranNum = Math.floor(Math.random() * allFilePaths.length);
     data = (allVectorPaths[ranNum]).split(",");
-    currVect = data.slice(1,6);
+    currVect = data.slice(1, 6);
+    emoteTypes.forEach((key, i) => currDic[key] = currVect[i]);
+    currVect = Object.keys(currDic).map(function (key) {
+        return [key, currDic[key]];
+    });
+    currVect.sort(function (first, second) {
+        return second[1] - first[1];
+    });
 
     var img = document.createElement("img");
     img.src = "../imgs/images/" + data[0];
@@ -67,23 +76,8 @@ function show_image() {
 
 // function to return model output predictions
 
-function saveAffects() {
-
+function saveAffects() { // NOT USED
     var pred = document.querySelector('input[name="emotion"]:checked').value;
-
-    // var anger = document.getElementById("angerValue");
-    // var anxiety = document.getElementById("anxietyValue");
-    // var positiveEmotion = document.getElementById("positiveValue");
-    // var affiliation = document.getElementById('affiliationValue')
-    // var sad = document.getElementById("sadnessValue");
-
-    // var pred = {
-    //     "positive": Number(positiveEmotion.value),
-    //     "anxiety": Number(anxiety.value),
-    //     "anger": Number(anger.value),
-    //     "sad": Number(sad.value),
-    //     "affiliation": Number(affiliation.value)
-    // }
 
     console.log("pred is", pred)
     return pred
@@ -96,40 +90,45 @@ function saveAffects() {
 // should be shown to user
 
 function onButtonClicked(clicked_id) {
-    //have to create counter to keep track of button clicks, change when button has been
-    //clicked 5 times
-    //paintingVector = getVector();
-    //pred = saveAffects();
-
     // disable button so it can't be clicked again
     document.getElementById(clicked_id).disabled = true;
 
     // Get clicked button emotion
     clicked_emotion = clicked_id.split("_")[0];
+
     // compare against expected (CHANGE CHECK TO BE REAL DATA)
-    if(clicked_emotion == emoteTypes[Math.floor(Math.random() * emoteTypes.length)]){
+    if (clicked_emotion == currVect[clicks][0]) {
         score++;
     }
     clicks++;
-    document.getElementById('current_pick').textContent = (clicks+1).toString();
+    document.getElementById('current_pick').textContent = (clicks).toString();
     document.getElementById('selection_' + (clicks).toString()).textContent = clicked_emotion;
-    // reset page if buttons have been completed
-    if(clicks >= emoteTypes.length){
-        clicks = 0;
-        document.getElementById('current_pick').textContent = (clicks+1).toString();
-        questions++;
-        show_image();
-        for(var i = 0; i < emoteTypes.length; i++){
-            document.getElementById(emoteTypes[i] + '_button').disabled = false;
-            document.getElementById('selection_' + (i+1).toString()).textContent = " ";
+    $(document.getElementById('selection_' + (clicks).toString())).css("opacity", .99);
+    setTimeout(function () { // timeout allows users to evaluate their inputs before page reloads
+        $(document.getElementById('selection_' + (clicks).toString())).css("opacity", 1);
+
+        // next image if ranking has been completed
+        if (clicks >= emoteTypes.length) {
+            clicks = 0;
+            questions++;
+            if (questions >= numGames) { // move to scoring page if game complete
+                showScore();
+            }
+            for (var i = 0; i < emoteTypes.length; i++) {
+                document.getElementById(emoteTypes[i] + '_button').disabled = false;
+                document.getElementById('selection_' + (i + 1).toString()).textContent = " ";
+            }
+            show_image();
+            document.getElementById('current_pick').textContent = (clicks + 1).toString();
         }
-        if(questions >= 5){
-            sessionStorage.setItem('playerScore', score.toString);
-            window.location.href = "/static/html/user_input.html";
-            // GO TO END SCREEN (SCORE SCREEN)
-        }
-    }
-    
+    }, 50);
+}
+
+function showScore() {
+    // SET SCORE STRING TO 'playerScore' below
+    sessionStorage.setItem('playerScore', score.toString());
+    window.location.href = "/static/html/scoring_page.html";
+    show_image();
 }
 
 
