@@ -93,6 +93,15 @@
       text-align: center;
       display: inline-block;
     }
+    #imageForm{
+    border: 3px solid red;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  #imageFormBox{
+    padding-left: 40px;
+    padding-right: 800px;
+  }
   </style>
 </head>
 
@@ -103,7 +112,22 @@
   <div style='padding-left: 40px'>
   <a href="/">Back</a>
   </div>
-  <header>ARTITUDE</header>
+  <header>Image to Affect</header>
+<br>
+<br>
+<br>
+<div id="imageFormBox">
+<div id="imageForm">
+  <br>
+  <br>
+  <form action="/GetUserImage">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit">
+</form>
+  <br>
+  <br>
+</div>
+</div>
 
   <script src="../js/functions.js" defer></script>
 

@@ -24,6 +24,11 @@ def GetVector():
     return '5'
 
 
+@app.route('/GetUserImage', methods=['GET', 'POST'])
+def GetUserImage():
+    print('get user image')
+
+
 @app.route('/TouchToArt', methods=['GET', 'POST'])
 def TouchToArt():
     data_from_js = request.get_json()
