@@ -5,7 +5,7 @@ vectorPath = "static/data/liwc_toParse.csv"
 var score = 0;
 var questions = 0;
 var ranNum = 0;
-var currVect = 0;
+var currVect = [];
 
 function readCSVToArray(path, delimter) {
     var filePaths = []
@@ -49,11 +49,11 @@ function show_image() {
     allVectorPaths = readCSVToArray(vectorPath, '\r')
 
     ranNum = Math.floor(Math.random() * allFilePaths.length);
-    currVect = allVectorPaths[ranNum]
+    data = allVectorPaths[ranNum].split(",")
+    currVect = data.slice(1,6);
 
-    
     var img = document.createElement("img");
-    img.src = "static/imgs/images/" + allFilePaths[ranNum];
+    img.src = "static/imgs/images/" + data[0];
     img.id = "picture";
     img.height = "600";
 
