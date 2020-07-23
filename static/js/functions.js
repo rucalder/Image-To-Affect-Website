@@ -1,6 +1,6 @@
 
-csvPath = "static/data/image_path.csv"
-vectorPath = "static/data/liwc_toParse.csv"
+csvPath = "../data/image_path.csv"
+vectorPath = "../data/liwc_toParse.csv"
 //var allFilePaths = []
 var score = 0;
 var questions = 0;
@@ -53,7 +53,7 @@ function show_image() {
     currVect = data.slice(1,6);
 
     var img = document.createElement("img");
-    img.src = "static/imgs/images/" + data[0];
+    img.src = "../imgs/images/" + data[0];
     img.id = "picture";
     img.height = "600";
 
@@ -163,36 +163,36 @@ $(document).ready(function () {
     //             var features = res[1];
     //             console.log("new data is" + data)
     //             console.log("new features is" + features)
- 
+
     //             document.getElementById("resultDiv").innerHTML = "";
     //             var img = document.createElement("img");
     //             img.src = "/static/imgs/images/" + data;
     //             img.id = "picture";
     //             img.height = "600";
- 
+
     //             var foo = document.getElementById("resultDiv");
     //             foo.appendChild(img);
     //             console.log("img src is" + img.src)
- 
+
     //         $('#PaintingName').html("result image is: " + data)
     //         //$('#artFeatures').html("features of selected art are: " + features)
     //         //$('#sliderValues').html("slider values are: " + JSON.stringify (pred))
- 
+
     //             var photovals = JSON.parse(features)
- 
+
     //         // Compare user input to given features
     //         $('#user-anger').html(pred["anger"])
     //         $('#user-anxiety').html(pred["anxiety"])
     //         $('#user-positive').html(pred["positive"])
     //         $('#user-sad').html(pred["sad"])
     //         $('#user-affiliation').html(pred["affiliation"])
- 
+
     //         $('#comp-anger').html(photovals[2])
     //         $('#comp-anxiety').html(photovals[1])
     //         $('#comp-positive').html(photovals[0])
     //         $('#comp-sad').html(photovals[3])
     //         $('#comp-affiliation').html(photovals[4])
- 
+
     //         // TODO difference column (how much user missed by) and color changing based on accuracy
     //         }
     //     })
