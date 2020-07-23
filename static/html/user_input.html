@@ -73,123 +73,35 @@
       padding: 5px;
       min-width: 100px;
     }
+    a {
+      background-color: black;
+      color: white;
+      border: 3px solid red;
+      padding: 5px;
+      min-width: 100px;
+      border-radius: 4px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: white;
+      color: black;
+      border-color: black;
+      padding: 5px;
+      min-width: 100px;
+      text-align: center;
+      display: inline-block;
+    }
   </style>
 </head>
 
 
 
 <body>
+  <br>
+  <a href="/">Back</a>
   <header>ARTITUDE</header>
-
-
-  <div class="space"></div>
-
-  <div class='container'>
-
-    <div id="input-text">
-      Guess the emotions evoked by the painting, and see how close you get!
-    </div>
-
-
-    <!-- <div id = "resultDivText">
-Image:
-</div> -->
-
-  </div>
-
-  <div id='parent_div'>
-
-    <div id="breakup">
-
-      <div class="slidecontainer">
-        <button id="anger_button" onclick="onButtonClicked()" class=selectionButton>
-          Anger
-        </button><br><br>
-        <button id="anxiety_button" onclick="onButtonClicked()" class=selectionButton>
-          Anxiety
-        </button><br><br>
-        <button id="positivity_button" onclick="onButtonClicked()" class=selectionButton>
-          Positivity
-        </button><br><br>
-        <button id="sadness_button" onclick="onButtonClicked()" class=selectionButton>
-          Sadness
-        </button><br><br>
-        <button id="love_button" onclick="onButtonClicked()" class=selectionButton>
-          Love
-        </button><br>
-        <!-- <form id="radioButtons">
-        <input type="radio" id="anger_radio" name="emotion" value="anger">
-        <label for="male">Anger</label><br>
-        <input type="radio" id="anxiety_radio" name="emotion" value="anxiety">
-        <label for="female">Anxiety</label><br>
-        <input type="radio" id="positivity_radio" name="emotion" value="positive">
-        <label for="other">Positvity</label><br>
-        <input type="radio" id="sadness_radio" name="emotion" value="sad">
-        <label for="other">Sadness</label><br>
-        <input type="radio" id="love_radio" name="emotion" value="love">
-        <label for="other">Love</label><br>
-      </form> -->
-        <!-- <form id="myForm">
-        <p style="color:white"> Anger:</p>
-        <input id="angerValue" type="range" min="0" max="33" value="0" class="slider">
-        <p style="color:white"> Anxiety:</p>
-        <input id="anxietyValue" type="range" min="0" max="59" value="0" class="slider">
-        <p style="color:white"> Happiness:</p>
-        <input id="positiveValue" type="range" min="0" max="90" value="0" class="slider">
-        <p style="color:white"> Sadness:</p>
-        <input id="sadnessValue" type="range" min="0" max="73" value="0" class="slider">
-        <p style="color:white"> Love: </p>
-        <input id="affiliationValue" type="range" min="0" max="51" value="0" class="slider">
-      </form> -->
-      </div>
-    </div>
-    <!-- <input onclick="resetFunc()" type="button" value="Reset"> -->
-    </form>
-
-
-    <div id="breakup"> </div>
-    <!-- ResultDiv is filled with result image -->
-    <div id="resultDiv"></div>
-    <!-- <div id="breakup"> </div> -->
-  </div>
-
-  <br>
-  <br>
-
-  <div style='text-align: center'>
-    <button id="submitButton" onclick="onButtonClicked()">
-      Submit your guess
-    </button>
-  </div>
-
-
-
-
-  <div class="grid-container">
-    <div class="grid-item" style="color:white">EMOTION</div>
-    <div class="grid-item">USER GUESS</div>
-    <div class="grid-item">PREDICTED</div>
-
-    <div class="grid-item">Anger</div>
-    <div class="grid-item" id="user-anger">0</div>
-    <div class="grid-item" id="comp-anger">0</div>
-
-    <div class="grid-item">Anxiety</div>
-    <div class="grid-item" id="user-anxiety">0</div>
-    <div class="grid-item" id="comp-anxiety">0</div>
-
-    <div class="grid-item">Vibes</div>
-    <div class="grid-item" id="user-positive">0</div>
-    <div class="grid-item" id="comp-positive">0</div>
-
-    <div class="grid-item">Sadness</div>
-    <div class="grid-item" id="user-sad">0</div>
-    <div class="grid-item" id="comp-sad">0</div>
-
-    <div class="grid-item">Love</div>
-    <div class="grid-item" id="user-affiliation">0</div>
-    <div class="grid-item" id="comp-affiliation">0</div>
-  </div>
 
 
   <script src="../js/functions.js" defer></script>
