@@ -73,6 +73,27 @@
       padding: 5px;
       min-width: 100px;
     }
+
+    a {
+      background-color: black;
+      color: white;
+      border-color: white;
+      padding: 5px;
+      min-width: 100px;
+      border-radius: 4px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: white;
+      color: black;
+      border-color: black;
+      padding: 5px;
+      min-width: 100px;
+      text-align: center;
+      display: inline-block;
+    }
   </style>
 </head>
 
@@ -81,22 +102,21 @@
 <body>
   <header>ARTITUDE</header>
 
+  <br>
+  <br>
 
-  <div class="space"></div>
-
-  <div class='container'>
-
-    <div id="input-text">
-      Guess the emotions evoked by the painting, and see how close you get!
-    </div>
+  <div style='text-align: center'>
 
 <div id = "sorting_game">
-  <button>Sorting Game</button>
+  <a href="static/html/sorting_game.html">Sorting Game</a>
   </div>
 
+  <br>
+
 <div id = "user_input">
-  <button>User Input Imput</button>
+  <a href="static/html/user_input.html">User Input Imput</a>
   </div>
+</div>
 
 </body>
 
