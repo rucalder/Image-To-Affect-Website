@@ -120,8 +120,9 @@
 <div id="imageForm">
   <br>
   <br>
-  <form action="/GetUserImage">
-  <input type="file" id="myFile" name="filename">
+  <form action="/GetUserImage" method="POST" enctype="multipart/form-data">
+>
+  <input type="file" id="myFile" name="image" id="image">
   <input type="submit">
 </form>
   <br>

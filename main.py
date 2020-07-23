@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_file, url_for
+from flask import Flask, render_template, request, jsonify, send_file, url_for, redirect
 import numpy as np
 import json
 import scipy.misc
@@ -6,6 +6,8 @@ import base64
 from io import BytesIO
 import time
 import pandas as pd
+
+import os
 
 from keras.models import load_model
 from keras import backend as K
@@ -19,14 +21,32 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+
+app.config["IMAGE_UPLOADS"] = "/Users/sairah/Documents/GitHub/Image-To-Affect-Website/static/imgs/user_uploads"
+
+
 @app.route('/GetVector', methods=['GET', 'POST'])
 def GetVector():
     return '5'
 
-
+#helpful tutorial - https://pythonise.com/series/learning-flask/flask-uploading-files
 @app.route('/GetUserImage', methods=['GET', 'POST'])
 def GetUserImage():
-    print('get user image')
+
+    if request.method == "POST":
+
+            if request.files:
+
+                image = request.files["image"]
+
+                image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
+
+                print("Image saved")
+
+                return redirect(request.url)
+
+    return render_template("index.html")
+
 
 
 @app.route('/TouchToArt', methods=['GET', 'POST'])
