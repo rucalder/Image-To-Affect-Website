@@ -1,8 +1,11 @@
 
 csvPath = "static/data/image_path.csv"
+vectorPath = "static/data/liwc_toParse.csv"
 //var allFilePaths = []
 var score = 0;
 var questions = 0;
+var ranNum = 0;
+var currVect = [];
 
 function readCSVToArray(path, delimter) {
     var filePaths = []
@@ -23,11 +26,11 @@ function readCSVToArray(path, delimter) {
     return filePaths
 }
 
-function getVector(document) {
+function getVector() {
     $.ajax({
         type: 'POST',
         url: '/GetVector',
-        data: JSON.stringify(document),
+        data: JSON.stringify(allFilePaths[ranNum]),
         contentType: 'application/json',
         success:function(data){
             return data;
@@ -43,11 +46,14 @@ function show_image() {
     document.getElementById("resultDiv").innerHTML = "";
 
     allFilePaths = readCSVToArray(csvPath, '\r')
+    allVectorPaths = readCSVToArray(vectorPath, '\r')
 
     ranNum = Math.floor(Math.random() * allFilePaths.length);
+    data = allVectorPaths[ranNum].split(",")
+    currVect = data.slice(1,6);
 
     var img = document.createElement("img");
-    img.src = "static/imgs/images/" + allFilePaths[ranNum];
+    img.src = "static/imgs/images/" + data[0];
     img.id = "picture";
     img.height = "600";
 
@@ -55,7 +61,6 @@ function show_image() {
 
     var foo = document.getElementById("resultDiv");
     foo.appendChild(img);
-
 }
 
 // function to return model output predictions
@@ -91,11 +96,13 @@ function saveAffects() {
 function onButtonClicked() {
     //have to create counter to keep track of button clicks, change when button has been
     //clicked 5 times
+    paintingVector = getVector();
     pred = saveAffects();
     questions++;
     if (pred == 'anger'){
         score++;
     }
+    $('input[name=emotion]').attr('checked',false);
     show_image();
     if(questions >= 5){
         document.getElementById("submitButton").textContent = score.toString();
