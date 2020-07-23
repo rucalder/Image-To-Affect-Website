@@ -21,7 +21,7 @@ def index():
 
 @app.route('/GetVector', methods=['GET', 'POST'])
 def GetVector():
-    return jsonify(5)
+    return '5'
 
 
 @app.route('/TouchToArt', methods=['GET', 'POST'])

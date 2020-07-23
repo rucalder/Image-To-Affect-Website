@@ -138,6 +138,7 @@ a {
   border-radius: 6px;
   text-align: center;
   margin-bottom: 200px;
+  min-height: 600px;
 }
 
 /* The slider itself */
