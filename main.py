@@ -44,8 +44,11 @@ def GetUserImage():
                 print("Image saved")
 
                 return redirect(request.url)
+                #return jsonify(image.filename)
+
 
     return render_template("user_input_output.html")
+#https://stackoverflow.com/questions/11262518/how-to-pass-uploaded-image-to-template-html-in-flask
 
 
 
