@@ -47,7 +47,7 @@ def GetUserImage():
                 # send through the ML
                 return redirect(request.url)
 
-    return render_template("user_input.html")#, jsonify(image.filename)
+    return render_template("user_input_output.html")#, jsonify(image.filename)
 #https://stackoverflow.com/questions/11262518/how-to-pass-uploaded-image-to-template-html-in-flask
 
 
