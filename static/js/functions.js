@@ -4,6 +4,7 @@ vectorPath = "../data/liwc_toParse.csv"
 //var allFilePaths = []
 var clicks = 0;
 var score = 0;
+var rawScore = 0;
 var questions = 0;
 var qScore = 0;
 var currVect = [];
@@ -68,6 +69,7 @@ function show_image() { //TODO make show image never repeat (in same round, I go
     img.src = "../imgs/images/" + data[0];
     img.id = "picture";
     img.height = "600";
+    img.style = 'display: block; margin-left: auto; margin-right: auto;'
 
     console.log(allFilePaths[ranNum]);
 
@@ -102,6 +104,7 @@ function onButtonClicked(clicked_id) {
     // compare against expected, change colour based on accuracy
     if (clicked_emotion == currVect[clicks][0]) {
         qScore++;
+        rawScore++;
         switch(clicks){ // give user points on a decreasing scale, with bonus points for all 5 right
             case 0:
                 score += 2;
@@ -147,6 +150,7 @@ function onButtonClicked(clicked_id) {
 function showScore() {
     // SET SCORE STRING TO 'playerScore' below
     sessionStorage.setItem('playerScore', score.toString());
+    sessionStorage.setItem('playerRawScore', rawScore.toString())
     window.location.href = "/static/html/scoring_page.html";
     show_image();
 }
@@ -154,4 +158,6 @@ function showScore() {
 
 $(document).ready(function () {
     show_image()
+    sessionStorage.setItem('playerScore', '0');
+    sessionStorage.setItem('playerRawScore', '0')
 })
