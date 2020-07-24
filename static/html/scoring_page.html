@@ -102,12 +102,15 @@
 
 <body style="background: black;">
     <header>Image to Affect</header>
-
     <div style='text-align: center; color: white;'>
-        SCORE:
-        <div id="game_result">
+        <div class = 'space'></div>
+        You matched
+        <div id="game_result" style = "display: inline;">
             
         </div>
+        out of 25 moods. 
+        
+        <div class = 'space'></div>
         <script type="text/javascript">
             var text = sessionStorage.getItem('playerScore')
             document.getElementById("game_result").innerHTML = text;

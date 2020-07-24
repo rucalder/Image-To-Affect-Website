@@ -96,13 +96,16 @@ function onButtonClicked(clicked_id) {
     // Get clicked button emotion
     clicked_emotion = clicked_id.split("_")[0];
 
+    document.getElementById('selection_' + (clicks+1).toString()).textContent = clicked_emotion;
     // compare against expected (CHANGE CHECK TO BE REAL DATA)
     if (clicked_emotion == currVect[clicks][0]) {
         score++;
+        document.getElementById('selection_' + (clicks+1).toString()).style = 'color: green;';
+    } else {
+        document.getElementById('selection_' + (clicks+1).toString()).style = 'color: red;';
     }
     clicks++;
     document.getElementById('current_pick').textContent = (clicks).toString();
-    document.getElementById('selection_' + (clicks).toString()).textContent = clicked_emotion;
     $(document.getElementById('selection_' + (clicks).toString())).css("opacity", .99);
     setTimeout(function () { // timeout allows users to evaluate their inputs before page reloads
         $(document.getElementById('selection_' + (clicks).toString())).css("opacity", 1);
