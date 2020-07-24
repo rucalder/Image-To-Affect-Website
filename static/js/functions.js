@@ -100,9 +100,9 @@ function onButtonClicked(clicked_id) {
     // Get clicked button emotion
     clicked_emotion = clicked_id.split("_")[0];
 
-    document.getElementById('selection_' + (clicks+1).toString()).textContent = clicked_emotion;
     // compare against expected, change colour based on accuracy
     if (clicked_emotion == currVect[clicks][0]) {
+        document.getElementById('selection_' + (clicks+1).toString()).textContent = clicked_emotion;
         qScore++;
         rawScore++;
         switch(clicks){ // give user points on a decreasing scale, with bonus points for all 5 right
@@ -122,6 +122,7 @@ function onButtonClicked(clicked_id) {
         }
         document.getElementById('selection_' + (clicks+1).toString()).style = 'color: green;';
     } else {
+        document.getElementById('selection_' + (clicks+1).toString()).textContent = currVect[clicks][0];
         document.getElementById('selection_' + (clicks+1).toString()).style = 'color: red;';
     }
 
@@ -159,5 +160,5 @@ function showScore() {
 $(document).ready(function () {
     show_image()
     sessionStorage.setItem('playerScore', '0');
-    sessionStorage.setItem('playerRawScore', '0')
+    sessionStorage.setItem('playerRawScore', '0');
 })
