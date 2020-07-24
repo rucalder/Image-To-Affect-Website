@@ -39,7 +39,7 @@ def GetUserImage():
 
                 image = request.files["image"]
 
-                image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
+                image.save(os.path.join(app.config["IMAGE_UPLOADS"], "userImage.jpg"))
 
                 print(image.filename)
                 print("Image saved")

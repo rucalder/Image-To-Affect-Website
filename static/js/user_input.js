@@ -13,3 +13,10 @@ function getFileName() {
 
 
 getFileName();
+
+
+
+document.getElementById("resultDiv").innerHTML = "";
+
+
+<img src="/Users/sairah/Documents/GitHub/Image-To-Affect-Website/static/imgs/user_uploads/userImage.jpg" alt="userImage">
