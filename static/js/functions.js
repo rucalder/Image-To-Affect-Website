@@ -5,6 +5,7 @@ vectorPath = "../data/liwc_toParse.csv"
 var clicks = 0;
 var score = 0;
 var questions = 0;
+var qScore = 0;
 var currVect = [];
 var currDic = {};
 //var emoteTypes = ['anger', 'anxiety', 'positivity', 'sadness', 'love'];
@@ -100,32 +101,46 @@ function onButtonClicked(clicked_id) {
     document.getElementById('selection_' + (clicks+1).toString()).textContent = clicked_emotion;
     // compare against expected, change colour based on accuracy
     if (clicked_emotion == currVect[clicks][0]) {
-        score++;
+        qScore++;
+        switch(clicks){ // give user points on a decreasing scale, with bonus points for all 5 right
+            case 0:
+                score += 2;
+            case 1:
+                score += 1;
+            case 2:
+                score += 1;
+            case 3:
+                score += 2;
+            case 4:
+                score += 1;
+                if(qScore == 5){
+                    score += 10;
+                }
+        }
         document.getElementById('selection_' + (clicks+1).toString()).style = 'color: green;';
     } else {
         document.getElementById('selection_' + (clicks+1).toString()).style = 'color: red;';
     }
 
     clicks++;
-    document.getElementById('current_pick').textContent = (clicks).toString();
-    $(document.getElementById('selection_' + (clicks).toString())).css("opacity", .99);
     setTimeout(function () { // timeout allows users to evaluate their inputs before page reloads
-        $(document.getElementById('selection_' + (clicks).toString())).css("opacity", 1);
-
         // next image if ranking has been completed
         if (clicks >= emoteTypes.length) {
             clicks = 0;
+            qScore = 0;
             questions++;
             if (questions >= numGames) { // move to scoring page if game complete
                 showScore();
             }
             for (var i = 0; i < emoteTypes.length; i++) {
                 document.getElementById(emoteTypes[i] + '_button').disabled = false;
-                document.getElementById('selection_' + (i + 1).toString()).textContent = " ";
+                document.getElementById('selection_' + (i + 1).toString()).innerHTML = "<br>";
+                document.getElementById('selection_' + (clicks+1).toString()).style = 'color: white;';
             }
             show_image();
             document.getElementById('current_pick').textContent = (clicks + 1).toString();
         }
+        document.getElementById('current_pick').textContent = (clicks+1).toString();
     }, 50);
 }
 
