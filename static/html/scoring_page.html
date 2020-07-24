@@ -103,29 +103,29 @@
 <body style="background: black;">
     <header>Image to Affect</header>
     <div style='text-align: center; color: white;'>
-        <div class = 'space'></div>
+        <div class='space'></div>
         You scored
-        <div id="game_result" style = "display: inline;">
-            
+        <div id="game_result" style="display: inline;">
+
         </div>
         points
         <br><br>
         You chose
-        <div id="raw_score" style = "display: inline;">
-            
+        <div id="raw_score" style="display: inline;">
+
         </div>
         emotions correctly of 25
-        <div style = 'color: black'>
+        <div style='color: black'>
             out of 150
-        </div> 
-        
-        <div class = 'space'></div>
+        </div>
+
+        <div class='space'></div>
         <script type="text/javascript">
             var text = sessionStorage.getItem('playerScore')
             document.getElementById("game_result").innerHTML = text;
             text = sessionStorage.getItem('playerRawScore')
             document.getElementById("raw_score").innerHTML = text;
-        </script> 
+        </script>
         <div id="sorting_game">
             <a href="/static/html/sorting_game.html">Play Again</a>
         </div>

@@ -73,6 +73,7 @@
       padding: 5px;
       min-width: 100px;
     }
+
     a {
       background-color: black;
       color: white;
@@ -93,15 +94,17 @@
       text-align: center;
       display: inline-block;
     }
-    #imageForm{
-    border: 3px solid red;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-  #imageFormBox{
-    padding-left: 40px;
-    padding-right: 800px;
-  }
+
+    #imageForm {
+      border: 3px solid red;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+
+    #imageFormBox {
+      padding-left: 40px;
+      padding-right: 800px;
+    }
   </style>
 </head>
 
@@ -109,28 +112,28 @@
 
 <body>
   <br>
-  <div style='padding-left: 40px'>
-  <a href="/">Back</a>
+  <div style='padding-left: 40px;'>
+    <a href="/">Back</a>
   </div>
   <header>Image to Affect</header>
-<br>
-<br>
-<br>
-<div id="imageFormBox">
-<div id="imageForm">
   <br>
   <br>
-  <form action="/GetUserImage" method="POST" enctype="multipart/form-data">
-    >
-  <input type="file" id="myFile" name="image" id="image">
-  <input type="submit" formaction="getNewFile()">
-</form>
   <br>
-  <br>
-</div>
-</div>
+  <div id="imageFormBox" style="justify-content: center; align-content: center; text-align: center;">
+    <div id="imageForm" style="color:white; justify-content: center; align-content: center;">
+      <br>
+      <br>
+      <form action="/GetUserImage" method="POST" enctype="multipart/form-data">
+        >
+        <input type="file" id="myFile" name="image" id="image">
+        <input type="submit" formaction="getNewFile()">
+      </form>
+      <br>
+      <br>
+    </div>
+  </div>
 
-<div id="resultDiv"></div>
+  <div id="resultDiv"></div>
 
 
 
