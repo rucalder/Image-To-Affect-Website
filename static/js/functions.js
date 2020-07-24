@@ -91,19 +91,21 @@ function saveAffects() { // NOT USED
 
 function onButtonClicked(clicked_id) {
     // disable button so it can't be clicked again
-    document.getElementById(clicked_id).disabled = true;
+    // document.getElementById(clicked_id).disabled = true;
+    document.getElementById(currVect[clicks][0] + '_button').disabled = true;
 
     // Get clicked button emotion
     clicked_emotion = clicked_id.split("_")[0];
 
     document.getElementById('selection_' + (clicks+1).toString()).textContent = clicked_emotion;
-    // compare against expected (CHANGE CHECK TO BE REAL DATA)
+    // compare against expected, change colour based on accuracy
     if (clicked_emotion == currVect[clicks][0]) {
         score++;
         document.getElementById('selection_' + (clicks+1).toString()).style = 'color: green;';
     } else {
         document.getElementById('selection_' + (clicks+1).toString()).style = 'color: red;';
     }
+
     clicks++;
     document.getElementById('current_pick').textContent = (clicks).toString();
     $(document.getElementById('selection_' + (clicks).toString())).css("opacity", .99);
