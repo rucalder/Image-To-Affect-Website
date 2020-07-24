@@ -123,14 +123,18 @@
   <form action="/GetUserImage" method="POST" enctype="multipart/form-data">
     >
   <input type="file" id="myFile" name="image" id="image">
-  <input type="submit">
+  <input type="submit" formaction="getNewFile()">
 </form>
   <br>
   <br>
 </div>
 </div>
 
-  <script src="../js/functions.js" defer></script>
+<div id="resultDiv"></div>
+
+
+
+  <script src="../js/user_input.js" defer></script>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"

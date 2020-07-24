@@ -34,19 +34,18 @@ def GetVector():
 def GetUserImage():
 
     if request.method == "POST":
-
             if request.files:
 
                 image = request.files["image"]
 
-                image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
+                image.save(os.path.join(app.config["IMAGE_UPLOADS"], "userImage.jpg"))
 
                 print(image.filename)
                 print("Image saved")
 
+                #resize image
+                # send through the ML
                 return redirect(request.url)
-                #return jsonify(image.filename)
-
 
     return render_template("user_input_output.html")#, jsonify(image.filename)
 #https://stackoverflow.com/questions/11262518/how-to-pass-uploaded-image-to-template-html-in-flask
